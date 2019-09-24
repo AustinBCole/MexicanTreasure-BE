@@ -19,7 +19,7 @@ from rest_framework import routers
 from mexicantreasure.api import PlayerViewSet
 
 router = routers.DefaultRouter()
-router.register(r'mexicantreasure', PlayerViewSet)
+router.register(r'players', PlayerViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
