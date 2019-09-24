@@ -13,5 +13,5 @@ class Player(models.Model):
 
 class Session(models.Model): 
     session_uuid = models.IntegerField()
-    session_status = models.CharField(max_length=10000)
+    is_active = models.BooleanField(default=True)
     players = models.ManyToManyField(Player)
