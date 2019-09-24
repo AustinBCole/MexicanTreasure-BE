@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from mexicantreasure.api import PlayerViewSet
+from mexicantreasure.api import PlayerViewSet, SessionViewSet
 
 router = routers.DefaultRouter()
 router.register(r'players', PlayerViewSet)
+router.register(r'sessions', SessionViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

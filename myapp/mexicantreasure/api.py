@@ -1,5 +1,5 @@
 from rest_framework import serializers, viewsets, permissions
-from .models import Player
+from .models import Player, Session
 
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
 
@@ -17,6 +17,25 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
 class PlayerViewSet(viewsets.ModelViewSet):
     serializer_class = PlayerSerializer
     queryset = Player.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+
+class SessionSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Session
+        fields = '__all__'
+        
+    def create(self, validated_data):
+        session = Session.objects.create(**validated_data)
+        return session
+        
+    def post(self):
+        return "Hello"
+
+class SessionViewSet(viewsets.ModelViewSet):
+    serializer_class = SessionSerializer
+    queryset = Session.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
